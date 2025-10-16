@@ -181,8 +181,7 @@ export const register = async (body: any) => {
         }
       }
     );
-    console.log(response.data);
-    console.log(response.data.message);
+    console.log(`otp sent to ${phone}: ${otp}`);
   } catch (error) {
     console.error('Error sending SMS:', error);
     console.log((error as any).response.data.message);
@@ -345,9 +344,10 @@ export const resendOtp = async (body: any) => {
         }
       }
     );
-    console.log(response.data);
+    console.log(`otp sent to ${phone}: ${otp}`);
   } catch (error) {
     console.error('Error sending SMS:', error);
+    console.log((error as any).response.data.message);
     throw { status: StatusCodes.INTERNAL_SERVER_ERROR, message: "Failed to send OTP SMS" };
   }
 
